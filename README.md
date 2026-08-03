@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.webp" alt="Bonny Bats — bats flying over a moonlit village" width="100%">
+</p>
+
 # 🦇 Bonny Bats
 
 A friendly, client-facing guide to **bats in buildings** — how to tell they're there, how to stay safe, what the law says, and how exclusion is done legally and humanely.
