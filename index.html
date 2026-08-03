@@ -62,19 +62,6 @@
   /* ============ PROGRESS BAR ============ */
   .progressbar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--gold2),var(--gold),#e8862e);z-index:80;border-radius:0 4px 4px 0;box-shadow:0 0 14px rgba(240,180,41,.65);}
 
-  /* ============ READABILITY TOOLBAR ============ */
-  .a11ybar{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:8px;background:rgba(11,16,32,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:8px 12px;box-shadow:0 10px 30px rgba(0,0,0,.5);}
-  .a11ybar .lbl{font-size:.68rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);padding-right:4px;white-space:nowrap;}
-  .a11ybar button{min-width:46px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font-weight:800;font-size:.95rem;cursor:pointer;transition:.2s;}
-  .a11ybar button:hover{border-color:var(--gold);}
-  .a11ybar button.on,.a11ybar button[aria-pressed="true"]{background:linear-gradient(135deg,var(--gold),#e0981e);color:#231a04;border-color:transparent;}
-  @media(max-width:900px){
-    .a11ybar{left:12px;right:12px;bottom:68px;max-width:none;border-radius:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px;}
-    .a11ybar .lbl{grid-column:1/-1;text-align:center;padding:0 0 4px;font-size:.62rem;}
-    .a11ybar button{width:100%;min-width:0;padding:0 4px;font-size:15px;border-radius:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .a11ybar button#aContrast{grid-column:1/-1;}
-  }
-
   /* ============ PRINT HEADER (print only) ============ */
   .print-header{display:none;}
 
@@ -465,18 +452,6 @@
   .backtop.show{display:block;}
   .backtop:hover{transform:translateY(-4px);}
 
-  /* ============ A11Y MODES ============ */
-  html.a11y-lg{font-size:115%;}
-  html.a11y-xl{font-size:130%;}
-  html.a11y-hc{
-    --bg:#02040a;--bg2:#050810;--card:#0b101f;--card2:#111a33;
-    --text:#ffffff;--muted:#d6ddf2;--line:rgba(255,255,255,.34);
-    --gold:#ffc94d;--gold2:#ffe9a8;--teal:#7ee8da;--red:#ffa095;
-    --green:#a2e8ab;--blue:#a8c8ff;
-  }
-  html.a11y-hc .card,html.a11y-hc .stat,html.a11y-hc .tablewrap,html.a11y-hc details,html.a11y-hc .a11ybar{border-width:2px;}
-  html.a11y-hc .btn.ghost{border-width:2px;}
-
   a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px;}
 
   @media (prefers-reduced-motion: reduce){
@@ -496,7 +471,7 @@
 
   @media print{
     @page{size:A4;margin:1.6cm;}
-    nav.topnav,.utilbar,.marquee,.backtop,.stars,.deco,.moon,.a11ybar,.callbar,.progressbar,.skip,.fly-bat,.flap,.shooting-star{display:none!important;}
+    nav.topnav,.utilbar,.marquee,.backtop,.stars,.deco,.moon,.callbar,.progressbar,.skip,.fly-bat,.flap,.shooting-star{display:none!important;}
     body{background:#fff;color:#111;font-size:11pt;line-height:1.5;}
     .print-header{display:block;text-align:center;font-size:10pt;color:#111;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:16px;}
     .card,.stat,.tablewrap,details,.hotline,.contact,.callout,.quote,.promise,.tl-item{break-inside:avoid;border-color:#bbb;background:#fff;box-shadow:none;color:#111;}
@@ -541,15 +516,6 @@
 <!-- print header (only shows when printing) -->
 <div class="print-header">
   <b>Bonny Bats</b> — Bat advice, surveys &amp; humane exclusion · National Bat Helpline 0345 1300 228
-</div>
-
-<!-- readability toolbar -->
-<div class="a11ybar" role="group" aria-label="Readability settings">
-  <span class="lbl">Readability</span>
-  <button type="button" id="aMinus" aria-label="Make text smaller">A−</button>
-  <button type="button" id="aPlus" aria-label="Make text bigger">A+</button>
-  <button type="button" id="aReset" aria-label="Reset text size">A</button>
-  <button type="button" id="aContrast" aria-pressed="false">◐&nbsp;Contrast</button>
 </div>
 
 <!-- mobile quick-contact bar -->
@@ -1320,50 +1286,6 @@
   }
   window.addEventListener('scroll', updateBar, {passive:true});
   updateBar();
-
-  // ---- Readability toolbar (text size, contrast, print) ----
-  (function(){
-    var root = document.documentElement;
-    var KEY_S = 'bonnybat-scale', KEY_C = 'bonnybat-contrast';
-    var levels = ['', 'a11y-lg', 'a11y-xl'];
-    var idx = 0;
-    try { idx = Math.min(levels.length - 1, Math.max(0, parseInt(localStorage.getItem(KEY_S) || '0', 10) || 0)); } catch(e){}
-    var plusBtn = document.getElementById('aPlus');
-    var minusBtn = document.getElementById('aMinus');
-
-    function paint(){
-      root.classList.remove('a11y-lg', 'a11y-xl');
-      if (levels[idx]) root.classList.add(levels[idx]);
-      plusBtn.classList.toggle('on', idx === levels.length - 1);
-      minusBtn.classList.toggle('on', idx === 0);
-    }
-    function save(){ try { localStorage.setItem(KEY_S, String(idx)); localStorage.setItem(KEY_C, root.classList.contains('a11y-hc') ? '1' : '0'); } catch(e){} }
-    paint();
-
-    document.getElementById('aMinus').addEventListener('click', function(){
-      if (idx > 0) idx--;
-      paint(); save();
-    });
-    document.getElementById('aPlus').addEventListener('click', function(){
-      if (idx < levels.length - 1) idx++;
-      paint(); save();
-    });
-    document.getElementById('aReset').addEventListener('click', function(){
-      idx = 0; paint(); save();
-    });
-
-    var hcBtn = document.getElementById('aContrast');
-    var hcOn = false;
-    try { hcOn = localStorage.getItem(KEY_C) === '1'; } catch(e){}
-    function applyHc(){
-      root.classList.toggle('a11y-hc', hcOn);
-      hcBtn.classList.toggle('on', hcOn);
-      hcBtn.setAttribute('aria-pressed', hcOn ? 'true' : 'false');
-      hcBtn.innerHTML = hcOn ? '◑&nbsp;Contrast' : '◐&nbsp;Contrast';
-    }
-    applyHc();
-    hcBtn.addEventListener('click', function(){ hcOn = !hcOn; applyHc(); save(); });
-  })();
 
   // ---- Back to top ----
   var btn = document.getElementById('backTop');

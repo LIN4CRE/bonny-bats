@@ -11,7 +11,7 @@ A friendly, client-facing guide to **bats in buildings** — how to tell they're
 ## ✨ Features
 
 - **Everything a homeowner needs** — signs, safety, the law, the 5-step exclusion process, seasonal timing table, safe guano clean-up, FAQs
-- **Readability tools** — A−/A+ text sizing, high-contrast mode and a one-click Print button (settings remembered)
+- **Print-friendly** — a one-click Print button with a clean A4 print layout
 - **Live seasonal awareness** — the page automatically warns when exclusion must wait (maternity season)
 - **Animations** — flying bats, shooting stars, shimmer headline (with reduced-motion support)
 - **One self-contained file** — works offline, easy to email or host
