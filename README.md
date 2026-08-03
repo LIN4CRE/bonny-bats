@@ -22,7 +22,7 @@ A friendly, client-facing guide to **bats in buildings** — how to tell they're
 
 ## 📄 Use it
 
-Open `index.html` in any browser — no build step, no dependencies. Replace the placeholder contact details in the "Contact" section before sharing.
+Open `index.html` in any browser — no build step, no dependencies. The page has no business contact details; visitors are pointed to the National Bat Helpline for help.
 
 ## 🧡 Credits
 

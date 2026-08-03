@@ -77,11 +77,8 @@
   .print-header{display:none;}
 
   /* ============ MOBILE QUICK-CALL BAR ============ */
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;grid-template-columns:1fr 1fr;background:rgba(9,13,26,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);}
-  .callbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 10px;font-weight:800;font-size:.92rem;text-decoration:none;}
-  .callbar a:first-child{border-right:1px solid var(--line);}
-  .callbar a.call{background:linear-gradient(135deg,var(--gold),#e0981e);color:#231a04;}
-  .callbar a.ghost2{color:var(--text);}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;grid-template-columns:1fr;background:rgba(9,13,26,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);}
+  .callbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 10px;font-weight:800;font-size:.95rem;text-decoration:none;background:linear-gradient(135deg,var(--gold),#e0981e);color:#231a04;}
   @media(max-width:900px){.callbar{display:grid;}body{padding-bottom:56px;}}
 
   /* ============ UTILITY BAR ============ */
@@ -527,10 +524,7 @@
   "@type": "LocalBusiness",
   "name": "Bonny Bats",
   "description": "Friendly bat specialists: free advice, licensed surveys and humane one-way exclusion for UK homes.",
-  "telephone": "+443451300228",
-  "email": "hello@bonnybats.co.uk",
   "areaServed": "United Kingdom",
-  "founder": {"@type": "Person", "name": "[Your Name]"},
   "url": "https://linacre.site"
 }
 </script>
@@ -544,7 +538,7 @@
 
 <!-- print header (only shows when printing) -->
 <div class="print-header">
-  <b>Bonny Bats</b> — Bat advice, surveys &amp; humane exclusion · National Bat Helpline 0345 1300 228 · hello@bonnybats.co.uk
+  <b>Bonny Bats</b> — Bat advice, surveys &amp; humane exclusion · National Bat Helpline 0345 1300 228
 </div>
 
 <!-- readability toolbar -->
@@ -558,9 +552,8 @@
 </div>
 
 <!-- mobile quick-contact bar -->
-<div class="callbar" aria-label="Quick contact">
-  <a class="call" href="tel:03450000000">📞 Call Bonny Bats</a>
-  <a class="ghost2" href="tel:03451300228">🦇 Bat helpline</a>
+<div class="callbar" aria-label="Bat helpline">
+  <a href="tel:03451300228">🦇 National Bat Helpline — free advice</a>
 </div>
 
 <!-- ============ UTILITY BAR ============ -->
@@ -593,7 +586,7 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="tel:03451300228">📞 0345 1300 228</a>
+    <a class="nav-cta" href="tel:03451300228">🦇 Bat Helpline</a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilePanel"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-panel" id="mobilePanel">
@@ -604,7 +597,7 @@
     <a href="#process">Process</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-    <a class="m-cta" href="tel:03451300228">📞 Call 0345 1300 228</a>
+    <a class="m-cta" href="tel:03451300228">🦇 Call the Bat Helpline</a>
   </div>
 </nav>
 
@@ -652,7 +645,7 @@
     <h1>Bats in your building?<br><span class="accent">Let's sort it — humanely.</span></h1>
     <p class="sub">We're Bonny Bats, your neighbourhood bat specialists. We help homeowners share their homes with our protected winged neighbours — <b style="color:var(--text)">legally, safely, and without harming a single bat</b>.</p>
     <div class="cta-row">
-      <a class="btn gold" href="#contact">Book a free consultation</a>
+      <a class="btn gold" href="#resources">Get free advice</a>
       <a class="btn ghost" href="#law"><span class="pulse"></span> Why you can't "remove" bats</a>
       <button class="btn ghost" type="button" onclick="window.print()">🖨 Print this guide</button>
     </div>
@@ -1131,67 +1124,13 @@
 <!-- ============ CONTACT ============ -->
 <section id="contact">
   <div class="wrap">
-    <!--
-      ============================================================
-      EDIT THIS SECTION BEFORE SENDING TO ANYONE!
-      Replace the placeholder phone number, email and service area
-      with YOUR real Bonny Bats details.
-      ============================================================
-    -->
     <div class="contact reveal">
-      <h3>Need help with bats on your property?<br>Let's have a <em>bonny</em> chat.</h3>
+      <h3>Need help with bats on your property?</h3>
       <p class="muted" style="max-width:640px;margin:14px auto 0;">Every job starts with a free conversation — and follows the law to the letter. So you, and the bats, are protected.</p>
+      <p class="muted" style="max-width:640px;margin:12px auto 0;">The quickest way to free, expert help is the <b>National Bat Helpline</b>, run by the Bat Conservation Trust — they'll talk you through anything bat-related.</p>
       <div class="c-line">
-        <span>📞 <a href="tel:03450000000">0345 000 0000</a></span>
-        <span>✉️ <a href="mailto:hello@bonnybats.co.uk">hello@bonnybats.co.uk</a></span>
-        <span>📍 Serving local homes &amp; businesses</span>
-      </div>
-      <p class="small">Mon–Fri 8:30am–6pm &nbsp;•&nbsp; Bat emergencies: National Bat Helpline <a href="tel:03451300228" style="color:var(--gold2);font-weight:700;">0345 1300 228</a></p>
-
-      <!--
-        FORM NOTE: this is a front-end demo form — it shows a success message
-        but doesn't actually send anywhere yet. To make it live, give the form
-        an action URL from a service like Formspree/Getform and method="post",
-        then remove the fake-submit script further down. Or delete the form and
-        keep the email address above. Replace the placeholder phone/email too!
-      -->
-      <div class="form-card">
-        <form class="fields" id="contactForm" novalidate>
-          <div>
-            <label for="fname">Your name *</label>
-            <input id="fname" name="name" type="text" required placeholder="e.g. Bonny">
-          </div>
-          <div>
-            <label for="fphone">Phone or email *</label>
-            <input id="fphone" name="contact" type="text" required placeholder="07xxx 123456">
-          </div>
-          <div>
-            <label for="farea">Postcode / town</label>
-            <input id="farea" name="area" type="text" placeholder="e.g. B15">
-          </div>
-          <div>
-            <label for="fissue">What's happening?</label>
-            <select id="fissue" name="issue">
-              <option>I think I have bats</option>
-              <option>I definitely have bats</option>
-              <option>I need a bat survey</option>
-              <option>Roof / building work</option>
-              <option>Just a question</option>
-            </select>
-          </div>
-          <div class="full">
-            <label for="fmsg">Tell us a little more</label>
-            <textarea id="fmsg" name="message" placeholder="How can we help?"></textarea>
-          </div>
-          <div class="full">
-            <button type="submit" class="btn gold">Send message 🦇</button>
-          </div>
-        </form>
-        <div class="form-success" id="formSuccess" role="status">
-          <div class="tick">✔</div>
-          <h3 style="font-family:var(--font-d);font-size:1.4rem;font-weight:900;color:var(--green);">Message sent — thank you!</h3>
-          <p class="muted" style="margin-top:8px;">We'll get back to you within one working day. For bat emergencies, call the National Bat Helpline <b>0345 1300 228</b>.</p>
-        </div>
+        <span>🦇 <a href="tel:03451300228">National Bat Helpline</a></span>
+        <span>🌐 <a href="https://www.bats.org.uk" target="_blank" rel="noopener">bats.org.uk</a></span>
       </div>
     </div>
   </div>
@@ -1227,7 +1166,6 @@
         <ul>
           <li><a href="tel:03451300228">National Bat Helpline — 0345 1300 228</a></li>
           <li><a href="https://www.bats.org.uk" target="_blank" rel="noopener">bats.org.uk</a></li>
-          <li><a href="mailto:hello@bonnybats.co.uk">hello@bonnybats.co.uk</a></li>
         </ul>
       </div>
     </div>
@@ -1427,14 +1365,6 @@
 
     document.getElementById('aPrint').addEventListener('click', function(){ window.print(); });
   })();
-
-  // ---- Contact form (demo — see comment in the HTML) ----
-  var form = document.getElementById('contactForm');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    form.style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-  });
 
   // ---- Back to top ----
   var btn = document.getElementById('backTop');
